@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Konda YouthNet and Family Health</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- PUBLIC WEBSITE -->
+  <section id="public">
+
+    <header>
+      <a class="brand" href="#">
+        ◉
+        <span>
+          Konda YouthNet
+          <small>AND FAMILY HEALTH</small>
+        </span>
+      </a>
+
+      <nav>
+        <a href="#programs">Programs</a>
+        <a href="#approach">Our approach</a>
+        <button id="enter">Explore staff demo ↗</button>
+      </nav>
+    </header>
+
+    <main>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">
+            PEOPLE FIRST. POSSIBILITIES NEXT.
+          </p>
+
+          <h1>
+            Stronger families.<br>
+            <em>Brighter futures.</em>
+          </h1>
+
+          <p class="lead">
+            A connected space for youth development,
+            family support, health education and
+            community opportunity.
+          </p>
+
+          <button class="primary" id="enter2">
+            Explore the management system →
+          </button>
+
+          <p class="subtle">
+            Website concept • Proposed programs for organization review
+          </p>
+        </div>
+
+        <div class="art" aria-hidden="true">
+          <div class="orb one"></div>
+          <div class="orb two"></div>
+          <div class="orb three"></div>
+
+          <div class="artcard">
+            Growing together
+            <span>Youth · Family · Community</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="programs">
+        <p class="eyebrow">
+          PATHWAYS TO OPPORTUNITY
+        </p>
+
+        <h2>Support that connects.</h2>
+
+        <div class="cards">
+
+          <article>
+            <span>01 / LEARN</span>
+            <h3>Digital skills & education</h3>
+
+            <p>
+              Build practical skills and track learning,
+              certification and education milestones.
+            </p>
+          </article>
+
+          <article>
+            <span>02 / THRIVE</span>
+            <h3>Family & community health</h3>
+
+            <p>
+              Connect health education, community
+              activities and referrals with thoughtful
+              follow-up.
+            </p>
+          </article>
+
+          <article>
+            <span>03 / BELONG</span>
+            <h3>Youth & family support</h3>
+
+            <p>
+              Connect people, households, volunteers
+              and programs in one coordinated system.
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="approach" class="approach">
+        <h2>One person. A connected journey.</h2>
+
+        <p>
+          Registration → Enrollment → Attendance →
+          Services → Referral → Follow-up → Outcome
+        </p>
+
+        <p>
+          Keep each person’s story connected as programs
+          and community partnerships grow.
+        </p>
+      </section>
+
+    </main>
+
+    <footer>
+      Konda YouthNet and Family Health · Website and system concept
+    </footer>
+
+  </section>
+
+
+  <!-- STAFF DEMO -->
+  <section id="workspace" hidden>
+
+    <aside>
+
+      <div class="brand">
+        ◉
+        <span>
+          Konda YouthNet
+          <small>STAFF WORKSPACE</small>
+        </span>
+      </div>
+
+      <div class="demo">FICTIONAL DEMO</div>
+
+      <!-- JavaScript will add navigation buttons here. -->
+      <nav id="sidebar" aria-label="Staff modules"></nav>
+
+      <button id="home">
+        ← Public website
+      </button>
+
+    </aside>
+
+    <div class="content">
+
+      <div class="top">
+        <span>Client & Program Management</span>
+
+        <button id="reset">
+          Reset demo
+        </button>
+      </div>
+
+      <div class="notice">
+        Demo only — use fictional records.
+        Changes reset on reload.
+        Authentication and a live database are not connected.
+      </div>
+
+      <!-- JavaScript will display dashboard and records here. -->
+      <div id="view"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ADD / EDIT RECORD FORM -->
+  <dialog id="modal">
+
+    <form id="recordForm">
+
+      <div class="dialogtop">
+        <h2 id="formTitle">Add record</h2>
+
+        <button
+          type="button"
+          id="close"
+          aria-label="Close form"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div id="fields"></div>
+
+      <p id="error" role="alert"></p>
+
+      <button type="submit" class="primary">
+        Save demo record
+      </button>
+
+    </form>
+
+  </dialog>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
