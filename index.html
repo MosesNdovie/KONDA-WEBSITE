@@ -1,1775 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description"
-      content="Konda YouthNet and Family Health — community-centered health, education and family support in Washington State.">
-<title>Konda YouthNet and Family Health</title>
-
-<style>
-:root {
-  --green: #173f36;
-  --teal: #317e73;
-  --light: #e9f2ed;
-  --cream: #f7f8f4;
-  --ink: #243e35;
-  --muted: #62736b;
-  --border: #dce5de;
-}
-
-* { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  background: var(--cream);
-  color: var(--ink);
-  font: 16px/1.7 Arial, Helvetica, sans-serif;
-}
-
-[hidden] { display: none !important; }
-
-button, input, select { font: inherit; }
-button { cursor: pointer; }
-
-a { color: inherit; text-decoration: none; }
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-h1, h2, h3 { line-height: 1.2; }
-h1, h2, h3, p { margin-top: 0; }
-
-h2 {
-  font-size: clamp(28px, 3.5vw, 40px);
-  letter-spacing: -1px;
-  margin-bottom: 18px;
-}
-
-:focus-visible {
-  outline: 3px solid #35978a;
-  outline-offset: 4px;
-}
-
-.container {
-  width: min(1120px, calc(100% - 40px));
-  margin-inline: auto;
-}
-
-.eyebrow {
-  margin-bottom: 14px;
-  color: var(--teal);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.muted { color: var(--muted); }
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  padding: 11px 19px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: white;
-  color: var(--green);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-.btn:hover { background: var(--light); }
-
-.btn.primary {
-  color: white;
-  border-color: var(--green);
-  background: var(--green);
-}
-
-.btn.primary:hover { background: #285d4e; }
-
-/* HEADER */
-
-header {
-  background: white;
-  border-bottom: 1px solid var(--border);
-}
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding-block: 16px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.logo {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-  border-radius: 8px;
-  flex-shrink: 0;
-}
-
-.brand strong {
-  display: block;
-  font-size: 18px;
-  line-height: 1.3;
-}
-
-.brand small {
-  display: block;
-  color: var(--muted);
-  font-size: 9px;
-  letter-spacing: 1.5px;
-}
-
-.main-nav {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.main-nav a:hover { color: var(--teal); }
-
-/* HERO */
-
-.hero {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 48px;
-  align-items: center;
-  padding-block: 64px;
-}
-
-.hero h1 {
-  font-size: clamp(38px, 4.8vw, 60px);
-  letter-spacing: -2px;
-  margin-bottom: 24px;
-}
-
-.hero h1 span { color: var(--teal); }
-
-.hero-copy {
-  color: var(--muted);
-  font-size: 17px;
-  margin-bottom: 26px;
-}
-
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.hero-picture {
-  padding: 12px;
-  border-radius: 20px;
-  background: #e0eee7;
-  border: 1px solid var(--border);
-}
-
-.hero-picture img {
-  width: 100%;
-  height: 300px;
-  object-fit: contain;
-  background: #d5e5dd;
-  border-radius: 12px;
-}
-
-.hero-caption {
-  padding: 16px 5px 4px;
-  font-size: 13px;
-}
-
-/* SECTIONS */
-
-.section { padding-block: 64px; }
-
-.intro {
-  max-width: 700px;
-  margin-bottom: 30px;
-}
-
-.intro p:last-child { color: var(--muted); }
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-.card {
-  padding: 28px;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: white;
-}
-
-.card h3 { font-size: 21px; }
-
-.card p {
-  color: var(--muted);
-  font-size: 14px;
-  margin-bottom: 0;
-}
-
-.values {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 24px;
-}
-
-.values span {
-  padding: 7px 12px;
-  border-radius: 30px;
-  background: var(--light);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.services-section {
-  background: #edf3ee;
-  border-block: 1px solid var(--border);
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-}
-
-.card-number {
-  display: inline-block;
-  margin-bottom: 20px;
-  color: var(--teal);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-/* PHOTOS */
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.gallery figure {
-  margin: 0;
-  min-width: 0;
-  padding: 8px;
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
-
-.gallery img {
-  width: 100%;
-  height: 180px;
-  object-fit: contain;
-  background: #e7eee6;
-  border-radius: 7px;
-}
-
-.gallery figcaption {
-  padding: 10px 4px 3px;
-  font-size: 12px;
-  color: var(--muted);
-}
-
-/* CONTACT */
-
-.contact-panel {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  padding: 40px;
-  background: var(--green);
-  color: white;
-  border-radius: 18px;
-}
-
-.contact-panel .eyebrow { color: #a9dac8; }
-.contact-panel p { color: #d5e7de; }
-
-.contact-details a {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  overflow-wrap: anywhere;
-}
-
-.contact-details address {
-  font-style: normal;
-  color: #d5e7de;
-}
-
-.contact-details p { margin-bottom: 20px; }
-
-.system-panel {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 25px;
-  margin-top: 24px;
-}
-
-.system-panel p {
-  margin: 0;
-  max-width: 700px;
-}
-
-footer {
-  padding-block: 28px;
-  border-top: 1px solid var(--border);
-  background: white;
-  font-size: 12px;
-  color: var(--muted);
-}
-
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-/* STAFF DEMO */
-
-.workspace {
-  display: flex;
-  min-height: 100vh;
-}
-
-.sidebar {
-  width: 230px;
-  flex-shrink: 0;
-  padding: 24px 16px;
-  color: white;
-  background: var(--green);
-}
-
-.sidebar .logo {
-  width: 42px;
-  height: 42px;
-}
-
-.sidebar .brand strong { font-size: 15px; }
-.sidebar .brand small { color: #c1d7cb; }
-
-.demo-label {
-  margin: 25px 10px 12px;
-  color: #b7decc;
-  font-size: 10px;
-  letter-spacing: 2px;
-}
-
-.module-nav { display: grid; gap: 4px; }
-
-.module-nav button {
-  padding: 9px 12px;
-  border: 0;
-  border-radius: 6px;
-  text-align: left;
-  color: #dce9e2;
-  background: transparent;
-  font-size: 13px;
-}
-
-.module-nav button:hover { background: #ffffff14; }
-
-.module-nav button.active {
-  color: var(--green);
-  background: #d9edc8;
-  font-weight: 700;
-}
-
-.workspace-main {
-  flex: 1;
-  min-width: 0;
-  padding: 28px;
-}
-
-.topbar, .toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.topbar {
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--border);
-}
-
-.notice {
-  margin-block: 20px;
-  padding: 12px 16px;
-  background: #fff2d7;
-  border-radius: 8px;
-  color: #785a25;
-  font-size: 12px;
-}
-
-.metrics {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-  margin-block: 25px;
-}
-
-.metric {
-  padding: 22px;
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
-
-.metric span {
-  display: block;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.metric strong {
-  display: block;
-  margin-top: 10px;
-  font-size: 30px;
-}
-
-.toolbar { margin-block: 25px; }
-.toolbar h2 { margin-bottom: 5px; font-size: 28px; }
-.toolbar p { margin: 0; color: var(--muted); font-size: 12px; }
-
-.tools { display: flex; gap: 10px; flex-wrap: wrap; }
-
-input, select {
-  width: 100%;
-  padding: 11px;
-  border: 1px solid #cad7cd;
-  border-radius: 7px;
-  background: white;
-  color: var(--ink);
-  font-size: 14px;
-}
-
-.search { width: 210px; }
-
-.table-wrap {
-  overflow-x: auto;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: white;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  white-space: nowrap;
-}
-
-th, td {
-  padding: 14px 16px;
-  text-align: left;
-  font-size: 13px;
-  border-bottom: 1px solid #e8eee6;
-}
-
-th {
-  background: #edf3e9;
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-td .btn {
-  padding: 6px 10px;
-  min-height: 32px;
-  font-size: 12px;
-}
-
-.empty { padding: 25px; color: var(--muted); }
-
-.profile-card { margin-top: 16px; }
-
-.profile-card p {
-  overflow-wrap: anywhere;
-  white-space: normal;
-}
-
-dialog {
-  width: min(650px, calc(100% - 24px));
-  max-height: 88vh;
-  overflow-y: auto;
-  padding: 26px;
-  border: 0;
-  border-radius: 14px;
-  color: var(--ink);
-}
-
-dialog::backdrop { background: #173f3680; }
-
-.dialog-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.dialog-header h2 { font-size: 24px; margin: 0; }
-
-.fields {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.fields label {
-  display: grid;
-  align-content: start;
-  gap: 7px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.error { color: #a43131; font-size: 13px; }
-
-@media (max-width: 900px) {
-  .main-nav { gap: 14px; }
-  .hero { gap: 30px; }
-  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-@media (max-width: 800px) {
-  .main-nav a { display: none; }
-  .hero, .about-grid, .contact-panel { grid-template-columns: 1fr; }
-  .hero { padding-block: 40px; }
-  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .system-panel { align-items: flex-start; flex-direction: column; }
-}
-
-@media (max-width: 600px) {
-  .container { width: calc(100% - 32px); }
-  .header-inner { flex-wrap: wrap; gap: 14px; }
-  .main-nav { width: 100%; }
-  .main-nav .btn { width: 100%; }
-  .logo { width: 48px; height: 48px; }
-  .brand strong { font-size: 16px; }
-  .hero h1 { font-size: 40px; }
-  .hero-picture img { height: 230px; }
-  .section { padding-block: 44px; }
-  .services-grid { grid-template-columns: 1fr; }
-  .gallery { gap: 10px; }
-  .gallery img { height: 135px; }
-  .contact-panel { padding: 26px; gap: 20px; }
-  .footer-inner { flex-direction: column; gap: 8px; }
-  .workspace { flex-direction: column; }
-  .sidebar { width: 100%; padding: 18px 16px; }
-  .module-nav { display: flex; overflow-x: auto; }
-  .module-nav button { white-space: nowrap; flex-shrink: 0; }
-  .workspace-main { padding: 20px 16px; }
-  .metrics { gap: 10px; }
-  .metric { padding: 16px; }
-  .metric strong { font-size: 26px; }
-  .fields { grid-template-columns: 1fr; }
-  .tools, .search { width: 100%; }
-}
-</style>
-</head>
-
-<body>
-
-<div id="publicSite">
-
-<header>
-  <div class="container header-inner">
-    <a class="brand" href="#" aria-label="Konda YouthNet home">
-      <img class="logo" src="konda-1.jpeg"
-           alt="Konda YouthNet and Family Health logo"
-           width="64" height="64">
-      <span>
-        <strong>Konda YouthNet</strong>
-        <small>AND FAMILY HEALTH</small>
-      </span>
-    </a>
-
-    <nav class="main-nav" aria-label="Main navigation">
-      <a href="#about">About</a>
-      <a href="#services">Our focus</a>
-      <a href="#community">Community</a>
-      <a href="#donate">Donate</a>
-      <a href="#contact">Contact</a>
-      <button class="btn primary" type="button" data-demo>
-        Staff demo ↗
-      </button>
-    </nav>
-  </div>
-</header>
-
-<main>
-
-<section class="container hero">
-  <div>
-    <p class="eyebrow">Community-centered · Washington State</p>
-    <h1>Healthier families.<br><span>Stronger communities.</span></h1>
-
-    <p class="hero-copy">
-      Konda YouthNet and Family Health brings a
-      community-driven approach to health access,
-      education and support for children, youth,
-      women, men and seniors.
-    </p>
-
-    <div class="actions">
-      <a class="btn primary" href="#contact">Connect with us →</a>
-      <a class="btn" href="#services">Explore our focus</a>
-    </div>
-  </div>
-
-  <div class="hero-picture">
-    <img src="konda-2.jpeg"
-         alt="Community photo shared by Konda YouthNet and Family Health"
-         width="600" height="400">
-    <div class="hero-caption">
-      <strong>Building healthier communities, together.</strong>
-    </div>
-  </div>
-</section>
-
-<section class="container section" id="about">
-  <div class="intro">
-    <p class="eyebrow">Who we are</p>
-    <h2>Care and connection across generations.</h2>
-    <p>
-      Based in Washington State, Konda YouthNet and
-      Family Health focuses on the needs of underserved,
-      low-income and marginalized communities.
-      Our approach connects health education,
-      family support and pathways to appropriate care.
-    </p>
-  </div>
-
-  <div class="about-grid">
-    <article class="card">
-      <span class="card-number">OUR MISSION</span>
-      <h3>Support wellbeing at every stage of life.</h3>
-      <p>
-        Develop holistic, multi-generational health programs
-        that address health disparities through prevention,
-        education, compassionate support and digital access.
-      </p>
-    </article>
-
-    <article class="card">
-      <span class="card-number">OUR VISION</span>
-      <h3>Equitable, vibrant and healthy communities.</h3>
-      <p>
-        A Washington State where access to healthcare is
-        a foundation for everyone’s wellbeing and where
-        barriers to care are reduced for future generations.
-      </p>
-    </article>
-  </div>
-
-  <div class="values" aria-label="Organization values">
-    <span>Equity</span>
-    <span>Whole-person support</span>
-    <span>Community trust</span>
-    <span>Cultural understanding</span>
-    <span>Collaboration</span>
-  </div>
-</section>
-
-<section class="services-section section" id="services">
-  <div class="container">
-    <div class="intro">
-      <p class="eyebrow">Our program focus</p>
-      <h2>Support built around community needs.</h2>
-      <p>
-        Contact our team to learn about current programs,
-        availability and referral options.
-      </p>
-    </div>
-
-    <div class="services-grid">
-      <article class="card">
-        <span class="card-number">01 / MATERNAL & CHILD HEALTH</span>
-        <h3>Supporting parents and children.</h3>
-        <p>
-          A focus on prenatal and postnatal wellbeing,
-          caregiver education, child development,
-          prevention and connections to appropriate support.
-        </p>
-      </article>
-
-      <article class="card">
-        <span class="card-number">02 / YOUTH-FRIENDLY SUPPORT</span>
-        <h3>Helping young people thrive.</h3>
-        <p>
-          Youth-focused health education, prevention,
-          wellbeing and community engagement, with
-          attention to privacy, trust and cultural understanding.
-        </p>
-      </article>
-
-      <article class="card">
-        <span class="card-number">03 / TELEHEALTH & DIGITAL ACCESS</span>
-        <h3>Connecting people beyond distance.</h3>
-        <p>
-          A focus on virtual-care access and digital literacy
-          to help communities navigate technology and
-          connect with health resources.
-        </p>
-      </article>
-
-      <article class="card">
-        <span class="card-number">04 / SOCIAL NEEDS & FAMILY SUPPORT</span>
-        <h3>Seeing the whole person.</h3>
-        <p>
-          Community outreach, support navigation and
-          referrals that consider social needs,
-          men’s wellbeing and the needs of older adults.
-        </p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="container section" id="community">
-
-  <div class="community-heading">
-    <div>
-      <p class="eyebrow">Our community in action</p>
-      <h2>Connection starts with people.</h2>
-    </div>
-
-    <p class="community-description">
-      Explore moments shared by Konda YouthNet
-      and Family Health.
-    </p>
-  </div>
-
-  <details class="photo-dropdown">
-    <summary>
-      <span class="dropdown-label">
-        <span class="gallery-symbol" aria-hidden="true">▧</span>
-
-        <span>
-          <strong>View community photos</strong>
-          <small>Four moments from our community</small>
-        </span>
-      </span>
-
-      <span class="dropdown-arrow" aria-hidden="true">⌄</span>
-    </summary>
-
-    <div class="gallery dropdown-gallery">
-
-      <figure>
-        <a
-          href="konda-2.jpeg"
-          target="_blank"
-          rel="noopener"
-          aria-label="Open community photo 1 in a new tab"
-        >
-          <img
-            src="konda-2.jpeg"
-            alt="Konda community photo 1"
-            width="400"
-            height="300"
-            loading="lazy"
-          >
-          <span class="photo-overlay">View full photo ↗</span>
-        </a>
-
-        <figcaption>Community moments</figcaption>
-      </figure>
-
-      <figure>
-        <a
-          href="konda-3.jpeg"
-          target="_blank"
-          rel="noopener"
-          aria-label="Open community photo 2 in a new tab"
-        >
-          <img
-            src="konda-3.jpeg"
-            alt="Konda community photo 2"
-            width="400"
-            height="300"
-            loading="lazy"
-          >
-          <span class="photo-overlay">View full photo ↗</span>
-        </a>
-
-        <figcaption>Connecting together</figcaption>
-      </figure>
-
-      <figure>
-        <a
-          href="konda-4.jpeg"
-          target="_blank"
-          rel="noopener"
-          aria-label="Open community photo 3 in a new tab"
-        >
-          <img
-            src="konda-4.jpeg"
-            alt="Konda community photo 3"
-            width="400"
-            height="300"
-            loading="lazy"
-          >
-          <span class="photo-overlay">View full photo ↗</span>
-        </a>
-
-        <figcaption>Shared experiences</figcaption>
-      </figure>
-
-      <figure>
-        <a
-          href="konda-5.jpeg"
-          target="_blank"
-          rel="noopener"
-          aria-label="Open community photo 4 in a new tab"
-        >
-          <img
-            src="konda-5.jpeg"
-            alt="Konda community photo 4"
-            width="400"
-            height="300"
-            loading="lazy"
-          >
-          <span class="photo-overlay">View full photo ↗</span>
-        </a>
-
-        <figcaption>Growing together</figcaption>
-      </figure>
-
-    </div>
-  </details>
-
-</section>
-  <div class="intro">
-    <p class="eyebrow">Our community</p>
-    <h2>Moments of connection.</h2>
-    <p>Photos shared by Konda YouthNet and Family Health.</p>
-  </div>
-
-<div class="gallery">
-
-  <figure>
-    <a href="konda-2.jpeg" target="_blank" rel="noopener">
-      <img
-        src="konda-2.jpeg"
-        alt="Konda community photo 1 — click to view full size"
-        width="400"
-        height="300"
-        loading="lazy"
-      >
-    </a>
-    <figcaption>Community moments · Click to enlarge</figcaption>
-  </figure>
-
-  <figure>
-    <a href="konda-3.jpeg" target="_blank" rel="noopener">
-      <img
-        src="konda-3.jpeg"
-        alt="Konda community photo 2 — click to view full size"
-        width="400"
-        height="300"
-        loading="lazy"
-      >
-    </a>
-    <figcaption>Connecting together · Click to enlarge</figcaption>
-  </figure>
-
-  <figure>
-    <a href="konda-4.jpeg" target="_blank" rel="noopener">
-      <img
-        src="konda-4.jpeg"
-        alt="Konda community photo 3 — click to view full size"
-        width="400"
-        height="300"
-        loading="lazy"
-      >
-    </a>
-    <figcaption>Shared experiences · Click to enlarge</figcaption>
-  </figure>
-
-  <figure>
-    <a href="konda-5.jpeg" target="_blank" rel="noopener">
-      <img
-        src="konda-5.jpeg"
-        alt="Konda community photo 4 — click to view full size"
-        width="400"
-        height="300"
-        loading="lazy"
-      >
-    </a>
-    <figcaption>Growing together · Click to enlarge</figcaption>
-  </figure>
-
-</div>
-    <figure>
-      <img src="konda-2.jpeg" alt="Konda community photo 1"
-           width="400" height="300" loading="lazy">
-      <figcaption>Community moments</figcaption>
-    </figure>
-
-    <figure>
-      <img src="konda-3.jpeg" alt="Konda community photo 2"
-           width="400" height="300" loading="lazy">
-      <figcaption>Connecting together</figcaption>
-    </figure>
-
-    <figure>
-      <img src="konda-4.jpeg" alt="Konda community photo 3"
-           width="400" height="300" loading="lazy">
-      <figcaption>Shared experiences</figcaption>
-    </figure>
-
-    <figure>
-      <img src="konda-5.jpeg" alt="Konda community photo 4"
-           width="400" height="300" loading="lazy">
-      <figcaption>Growing together</figcaption>
-    </figure>
-  </div>
-</section>
-<!-- DONATION SECTION -->
-<section class="services-section section" id="donate">
-  <div class="container">
-
-    <div class="intro">
-      <p class="eyebrow">Support our community</p>
-      <h2>Help build healthier futures.</h2>
-
-      <p>
-        Support Konda YouthNet and Family Health’s mission
-        to connect children, youth and families with health
-        education, community support and opportunities
-        for wellbeing.
-      </p>
-    </div>
-
-    <div class="services-grid">
-
-      <article class="card">
-        <span class="card-number">GIVE SUPPORT</span>
-        <h3>Make a donation.</h3>
-
-        <p>
-          Contact our team to discuss a financial contribution
-          and learn about available donation methods.
-        </p>
-
-        <a
-          class="btn primary"
-          style="margin-top: 24px;"
-          href="mailto:info@kondayouthnetandfamilyhealth.com?subject=Donation%20Inquiry"
-        >
-          Ask about donating →
-        </a>
-      </article>
-
-      <article class="card">
-        <span class="card-number">PARTNER WITH US</span>
-        <h3>Give resources or your time.</h3>
-
-        <p>
-          Ask about volunteering, in-kind contributions
-          or community partnerships that align with
-          the organization’s current needs.
-        </p>
-
-        <a
-          class="btn"
-          style="margin-top: 24px;"
-          href="mailto:info@kondayouthnetandfamilyhealth.com?subject=Community%20Support%20Inquiry"
-        >
-          Explore ways to help →
-        </a>
-      </article>
-
-    </div>
-  </div>
-</section>
-<section class="container section" id="contact">
-  <div class="contact-panel">
-    <div>
-      <p class="eyebrow">Get in touch</p>
-      <h2>Let’s connect.</h2>
-      <p>
-        Contact Konda YouthNet and Family Health to ask
-        about programs, community partnerships,
-        volunteering and support opportunities.
-      </p>
-      <a class="btn"
-         href="mailto:info@kondayouthnetandfamilyhealth.com">
-        Email our team →
-      </a>
-    </div>
-
-    <div class="contact-details">
-      <p>
-        <strong>Phone</strong><br>
-        <a href="tel:+12068251833">(206) 825-1833</a>
-      </p>
-
-      <p>
-        <strong>Email</strong><br>
-        <a href="mailto:info@kondayouthnetandfamilyhealth.com">
-          info@kondayouthnetandfamilyhealth.com
-        </a>
-      </p>
-
-      <strong>Location</strong>
-      <address>
-        930 S 336th Street<br>
-        Suite G RM 3<br>
-        Federal Way, WA 98003
-      </address>
-    </div>
-  </div>
-
-  <div class="card system-panel">
-    <div>
-      <h3>Client & Program Management</h3>
-      <p>
-        Explore a fictional demonstration of participant,
-        family, program, referral, volunteer and finance tracking.
-      </p>
-    </div>
-    <button class="btn primary" type="button" data-demo>
-      Explore staff demo →
-    </button>
-  </div>
-</section>
-
-</main>
-
-<footer>
-  <div class="container footer-inner">
-    <span>Konda YouthNet and Family Health</span>
-    <span>
-      For information about care, contact the team.
-      This website does not provide medical diagnosis.
-    </span>
-  </div>
-</footer>
-
-</div>
-
-<!-- STAFF DEMO -->
-
-<section class="workspace" id="workspace" hidden>
-  <aside class="sidebar">
-    <div class="brand">
-      <img class="logo" src="konda-1.jpeg" alt="Konda logo"
-           width="42" height="42">
-      <span>
-        <strong>Konda YouthNet</strong>
-        <small>STAFF DEMO</small>
-      </span>
-    </div>
-
-    <p class="demo-label">FICTIONAL RECORDS</p>
-    <nav class="module-nav" id="moduleNav"
-         aria-label="Management modules"></nav>
-
-    <button class="btn" id="home" type="button"
-            style="margin-top:20px">
-      ← Public website
-    </button>
-  </aside>
-
-  <div class="workspace-main">
-    <div class="topbar">
-      <strong>Client & Program Management</strong>
-      <button class="btn" type="button" id="reset">Reset demo</button>
-    </div>
-
-    <div class="notice">
-      Demo only. Use fictional information.
-      Changes reset on reload. Staff authentication,
-      document uploads and a live database are not connected.
-    </div>
-
-    <div id="view"></div>
-  </div>
-</section>
-
-<dialog id="dialog" aria-labelledby="formTitle">
-  <form id="form">
-    <div class="dialog-header">
-      <h2 id="formTitle">Add record</h2>
-      <button class="btn" type="button" id="close"
-              aria-label="Close form">✕</button>
-    </div>
-
-    <div class="fields" id="fields"></div>
-    <p class="error" id="error" role="alert"></p>
-    <button class="btn primary" type="submit"
-            style="margin-top:16px">Save demo record</button>
-  </form>
-</dialog>
-
-<script>
-"use strict";
-
-/* Every record in this demonstration is fictional. */
-
-const modules = {
-  participants: {
-    label: "Participants",
-    fields: [
-      ["first_name","First name","text",true],
-      ["last_name","Last name","text",true],
-      ["date_of_birth","Date of birth","date"],
-      ["phone","Phone","tel"],
-      ["email","Email","email"],
-      ["address","Address","text"],
-      ["city","City","text"],
-      ["zip_code","ZIP code","text"],
-      ["language","Preferred language","text"],
-      ["emergency_contact","Emergency contact","text"],
-      ["registration_date","Registration date","date",true],
-      ["status","Status",["Active","Inactive"],true]
-    ]
-  },
-  households: {
-    label: "Families & households",
-    fields: [
-      ["name","Household name","text",true],
-      ["address","Address","text"],
-      ["city","City","text"]
-    ]
-  },
-  household_members: {
-    label: "Household members",
-    fields: [
-      ["household_id","Household","@households",true],
-      ["participant_id","Participant","@participants",true],
-      ["relationship","Relationship","text",true]
-    ]
-  },
-  programs: {
-    label: "Programs",
-    fields: [
-      ["name","Program name","text",true],
-      ["description","Description","text"],
-      ["status","Status",["Active","Inactive"],true]
-    ]
-  },
-  enrollments: {
-    label: "Program enrollment",
-    fields: [
-      ["participant_id","Participant","@participants",true],
-      ["program_id","Program","@programs",true],
-      ["cohort","Cohort","text"],
-      ["start_date","Start date","date",true],
-      ["end_date","End date","date"],
-      ["status","Status",["Enrolled","Completed","Withdrawn"],true]
-    ]
-  },
-  activities: {
-    label: "Events & activities",
-    fields: [
-      ["title","Title","text",true],
-      ["program_id","Program","@programs"],
-      ["activity_date","Date","date",true],
-      ["location","Location","text"]
-    ]
-  },
-  attendance: {
-    label: "Attendance",
-    fields: [
-      ["activity_id","Event / session","@activities",true],
-      ["participant_id","Participant","@participants",true],
-      ["status","Status",["Present","Absent","Excused"],true]
-    ]
-  },
-  services: {
-    label: "Service catalog",
-    fields: [
-      ["name","Service name","text",true],
-      ["category","Category","text",true]
-    ]
-  },
-  encounters: {
-    label: "Service encounters",
-    fields: [
-      ["participant_id","Participant","@participants",true],
-      ["service_id","Service","@services",true],
-      ["service_date","Date","date",true],
-      ["provided_by","Provided by","@people"],
-      ["summary","Non-sensitive summary","text"]
-    ]
-  },
-  referrals: {
-    label: "Referrals",
-    fields: [
-      ["participant_id","Participant","@participants",true],
-      ["destination","Destination","text",true],
-      ["category","Category","text",true],
-      ["referral_date","Referral date","date",true],
-      ["due_date","Follow-up due","date"],
-      ["assigned_to","Assigned to","@people"],
-      ["status","Status",["Open","In progress","Closed"],true]
-    ]
-  },
-  followups: {
-    label: "Referral follow-ups",
-    fields: [
-      ["referral_id","Referral","@referrals",true],
-      ["followup_date","Date","date",true],
-      ["result","Non-sensitive result","text",true],
-      ["next_date","Next follow-up","date"]
-    ]
-  },
-  people: {
-    label: "Volunteers & staff",
-    fields: [
-      ["name","Name","text",true],
-      ["type","Type",["Volunteer","Staff"],true],
-      ["email","Email","email"],
-      ["phone","Phone","tel"],
-      ["status","Status",["Active","Inactive"],true]
-    ]
-  },
-  assignments: {
-    label: "Volunteer assignments",
-    fields: [
-      ["person_id","Person","@people",true],
-      ["activity_id","Activity","@activities",true],
-      ["role","Assignment role","text",true],
-      ["hours","Hours","number"]
-    ]
-  },
-  donors: {
-    label: "Donors",
-    fields: [
-      ["name","Name","text",true],
-      ["type","Type",["Individual","Organization"],true],
-      ["email","Email","email"]
-    ]
-  },
-  donations: {
-    label: "Donations",
-    fields: [
-      ["donor_id","Donor","@donors",true],
-      ["program_id","Program","@programs"],
-      ["donation_date","Date","date",true],
-      ["amount","Amount","number",true],
-      ["currency","Currency",["USD","MWK"],true]
-    ]
-  },
-  grants: {
-    label: "Grants",
-    fields: [
-      ["title","Grant title","text",true],
-      ["funder","Funder","text",true],
-      ["award_amount","Award amount","number"],
-      ["currency","Currency",["USD","MWK"],true],
-      ["status","Status",
-       ["Draft","Submitted","Awarded","Declined","Closed"],true]
-    ]
-  },
-  grant_budgets: {
-    label: "Grant budgets",
-    fields: [
-      ["grant_id","Grant","@grants",true],
-      ["category","Category","text",true],
-      ["planned_amount","Planned amount","number",true]
-    ]
-  },
-  grant_expenses: {
-    label: "Grant expenses",
-    fields: [
-      ["budget_id","Budget","@grant_budgets",true],
-      ["expense_date","Date","date",true],
-      ["amount","Amount","number",true],
-      ["reference","Reference","text"]
-    ]
-  },
-  grant_reports: {
-    label: "Grant deadlines",
-    fields: [
-      ["grant_id","Grant","@grants",true],
-      ["title","Report title","text",true],
-      ["due_date","Due date","date",true],
-      ["status","Status",["Draft","Submitted"],true]
-    ]
-  },
-  outcomes: {
-    label: "Outcomes",
-    fields: [
-      ["participant_id","Participant","@participants",true],
-      ["enrollment_id","Enrollment","@enrollments"],
-      ["category","Category","text",true],
-      ["result","Observed result","text",true],
-      ["observed_date","Date","date",true]
-    ]
-  },
-  consents: {
-    label: "Consent records",
-    fields: [
-      ["participant_id","Participant","@participants",true],
-      ["consent_type","Consent type","text",true],
-      ["version","Version","text",true],
-      ["status","Status",["Granted","Declined","Withdrawn"],true],
-      ["recorded_date","Date","date",true]
-    ]
-  },
-  documents: {
-    label: "Document register",
-    fields: [
-      ["participant_id","Participant","@participants"],
-      ["title","Title","text",true],
-      ["document_type","Type","text",true],
-      ["status","Demo status",["Pending","Example only"],true]
-    ]
-  }
-};
-
-const seed = Object.fromEntries(
-  Object.keys(modules).map(key => [key, []])
-);
-
-seed.participants = [
-  {id:1,first_name:"Alex",last_name:"Demo",language:"English",
-   registration_date:"2026-10-01",status:"Active"},
-  {id:2,first_name:"Jordan",last_name:"Sample",language:"English",
-   registration_date:"2026-10-03",status:"Active"}
-];
-
-seed.programs = [
-  {id:1,name:"Community Health Education — Demo",status:"Active"},
-  {id:2,name:"Digital Access — Demo",status:"Active"}
-];
-
-seed.enrollments = [
-  {id:1,participant_id:1,program_id:1,cohort:"Example cohort",
-   start_date:"2026-10-02",status:"Enrolled"}
-];
-
-seed.people = [
-  {id:1,name:"Taylor Example",type:"Volunteer",status:"Active"}
-];
-
-seed.activities = [
-  {id:1,title:"Community workshop — Demo",program_id:1,
-   activity_date:"2026-10-05",location:"Example community space"}
-];
-
-seed.attendance = [
-  {id:1,activity_id:1,participant_id:1,status:"Present"}
-];
-
-seed.referrals = [
-  {id:1,participant_id:1,destination:"Example support partner",
-   category:"Community support",referral_date:"2026-10-05",
-   due_date:"2026-10-20",assigned_to:1,status:"Open"}
-];
-
-seed.donors = [
-  {id:1,name:"Example supporter",type:"Individual"}
-];
-
-seed.donations = [
-  {id:1,donor_id:1,program_id:1,donation_date:"2026-10-02",
-   amount:250,currency:"USD"}
-];
-
-seed.grants = [
-  {id:1,title:"Example community grant",funder:"Example foundation",
-   award_amount:0,currency:"USD",status:"Submitted"}
-];
-
-seed.grant_reports = [
-  {id:1,grant_id:1,title:"Example progress report",
-   due_date:"2026-12-01",status:"Draft"}
-];
-
-let db = structuredClone(seed);
-let current = "dashboard";
-let query = "";
-
-const $ = selector => document.querySelector(selector);
-
-const esc = value => String(value ?? "").replace(
-  /[&<>"']/g,
-  character => ({
-    "&":"&amp;", "<":"&lt;", ">":"&gt;",
-    '"':"&quot;", "'":"&#39;"
-  }[character])
-);
-
-const code = record => "DEMO-" + String(record.id).padStart(4,"0");
-
-function label(key, record) {
-  if (!record) return "Unavailable";
-  if (key === "participants") {
-    return code(record) + " · " +
-      record.first_name + " " + record.last_name;
-  }
-  if (key === "enrollments") {
-    const program = db.programs.find(x => x.id === record.program_id);
-    return "#" + record.id + " · " + (program?.name || "Enrollment");
-  }
-  return record.name || record.title || record.destination ||
-    record.category || "#" + record.id;
-}
-
-function value(field, raw) {
-  const type = field[2];
-  if (typeof type === "string" && type.startsWith("@")) {
-    if (raw == null) return "—";
-    const target = type.slice(1);
-    return label(target, db[target].find(x => x.id === raw));
-  }
-  return raw == null || raw === "" ? "—" : raw;
-}
-
-function switchTo(key) {
-  current = key;
-  query = "";
-  render();
-}
-
-document.querySelectorAll("[data-demo]").forEach(button => {
-  button.onclick = () => {
-    $("#publicSite").hidden = true;
-    $("#workspace").hidden = false;
-    render();
-    window.scrollTo(0,0);
-  };
-});
-
-$("#home").onclick = () => {
-  $("#workspace").hidden = true;
-  $("#publicSite").hidden = false;
-  window.scrollTo(0,0);
-};
-
-$("#reset").onclick = () => {
-  if (confirm("Reset all fictional demo changes?")) {
-    db = structuredClone(seed);
-    query = "";
-    render();
-  }
-};
-
-$("#moduleNav").innerHTML =
-  '<button type="button" data-module="dashboard">Overview</button>' +
-  Object.entries(modules).map(([key,module]) =>
-    `<button type="button" data-module="${key}">
-      ${esc(module.label)}
-    </button>`
-  ).join("");
-
-$("#moduleNav").onclick = event => {
-  const button = event.target.closest("[data-module]");
-  if (button) switchTo(button.dataset.module);
-};
-
-function render() {
-  document.querySelectorAll("[data-module]").forEach(button => {
-    const active = button.dataset.module === current;
-    button.classList.toggle("active", active);
-    if (active) button.setAttribute("aria-current","page");
-    else button.removeAttribute("aria-current");
-  });
-
-  if (current === "dashboard") dashboard();
-  else tableView();
-}
-
-function dashboard() {
-  const donations = db.donations
-    .filter(x => x.currency === "USD")
-    .reduce((sum,x) => sum + Number(x.amount || 0),0);
-
-  const metrics = [
-    ["Active participants",
-     db.participants.filter(x => x.status === "Active").length],
-    ["Enrollments",db.enrollments.length],
-    ["Open referrals",db.referrals.filter(x => x.status !== "Closed").length],
-    ["Demo donations · USD","$" + donations.toLocaleString()]
-  ];
-
-  $("#view").innerHTML = `
-    <p class="eyebrow">Community at a glance</p>
-    <h2>Every connection counts.</h2>
-    <p class="muted">Totals from fictional demonstration records.</p>
-
-    <div class="metrics">
-      ${metrics.map(([name,total]) => `
-        <article class="metric">
-          <span>${esc(name)}</span><strong>${esc(total)}</strong>
-        </article>
-      `).join("")}
-    </div>
-
-    <article class="card">
-      <h3>Pending grant reports</h3>
-      ${db.grant_reports
-        .filter(x => x.status !== "Submitted")
-        .sort((a,b) => String(a.due_date).localeCompare(String(b.due_date)))
-        .map(x => `<p>${esc(x.title)} · Due ${esc(x.due_date)}</p>`)
-        .join("") || "<p>No pending reports.</p>"}
-      <button class="btn" type="button" id="deadlines">
-        View deadlines →
-      </button>
-    </article>
-  `;
-
-  $("#deadlines").onclick = () => switchTo("grant_reports");
-}
-
-function matches() {
-  return db[current].filter(record => {
-    const text = modules[current].fields
-      .map(field => value(field,record[field[0]])).join(" ") +
-      (current === "participants" ? " " + code(record) : "");
-
-    return text.toLowerCase().includes(query.toLowerCase());
-  });
-}
-
-function rowsHTML(rows, fields) {
-  return rows.map(record => `
-    <tr>
-      ${current === "participants" ? `
-        <td><button class="btn" type="button"
-                    data-profile="${record.id}">
-          ${code(record)}
-        </button></td>` : ""}
-      ${fields.map(field =>
-        `<td>${esc(value(field,record[field[0]]))}</td>`
-      ).join("")}
-      <td><button class="btn" type="button"
-                  data-edit="${record.id}">Edit</button></td>
-    </tr>
-  `).join("");
-}
-
-function tableView() {
-  const module = modules[current];
-  const fields = module.fields.slice(0,5);
-  const rows = matches();
-
-  $("#view").innerHTML = `
-    <div class="toolbar">
-      <div>
-        <h2>${esc(module.label)}</h2>
-        <p id="count">${rows.length} fictional records</p>
-      </div>
-      <div class="tools">
-        <input class="search" id="search" type="search"
-               aria-label="Search records" placeholder="Search records…"
-               value="${esc(query)}">
-        <button class="btn" type="button" id="export">Export demo</button>
-        <button class="btn primary" type="button" id="add">+ Add record</button>
-      </div>
-    </div>
-
-    <div class="table-wrap">
-      <table>
-        <thead><tr>
-          ${current === "participants" ? "<th>Participant ID</th>" : ""}
-          ${fields.map(field => `<th>${esc(field[1])}</th>`).join("")}
-          <th>Action</th>
-        </tr></thead>
-        <tbody id="rows">${rowsHTML(rows,fields)}</tbody>
-      </table>
-      <p class="empty" id="empty" ${rows.length ? "hidden" : ""}>
-        No records found. Add a fictional record to get started.
-      </p>
-    </div>
-  `;
-
-  $("#search").oninput = event => {
-    query = event.target.value;
-    const filtered = matches();
-    $("#rows").innerHTML = rowsHTML(filtered,fields);
-    $("#count").textContent = filtered.length + " fictional records";
-    $("#empty").hidden = filtered.length > 0;
-  };
-
-  $("#add").onclick = () => form();
-  $("#export").onclick = exportRecords;
-
-  $("#rows").onclick = event => {
-    const edit = event.target.closest("[data-edit]");
-    const profile = event.target.closest("[data-profile]");
-    if (edit) form(db[current].find(x => x.id === Number(edit.dataset.edit)));
-    if (profile) participantProfile(Number(profile.dataset.profile));
-  };
-}
-
-function participantProfile(id) {
-  const participant = db.participants.find(x => x.id === id);
-  const linked = [
-    "household_members","enrollments","attendance","encounters",
-    "referrals","outcomes","consents","documents"
-  ];
-
-  $("#view").innerHTML = `
-    <button class="btn" type="button" id="back">← Participants</button>
-    <h2 style="margin-top:24px">${esc(label("participants",participant))}</h2>
-    <p class="muted">${esc(participant.status)}</p>
-
-    ${linked.map(key => `
-      <article class="card profile-card">
-        <h3>${esc(modules[key].label)}</h3>
-        ${db[key].filter(x => x.participant_id === id).map(record => `
-          <p>${modules[key].fields
-            .filter(field => field[0] !== "participant_id")
-            .map(field => esc(field[1]) + ": " +
-              esc(value(field,record[field[0]]))).join(" · ")}</p>
-        `).join("") || "<p>No linked demo records.</p>"}
-      </article>
-    `).join("")}
-  `;
-
-  $("#back").onclick = render;
-}
-
-function inputHTML(field, record) {
-  const [name,title,type,required] = field;
-  const raw = record?.[name] ?? "";
-  const req = required ? "required" : "";
-  let input;
-
-  if (Array.isArray(type)) {
-    input = `<select name="${name}" ${req}>
-      <option value="">Select…</option>
-      ${type.map(option => `<option value="${esc(option)}"
-        ${option === raw ? "selected" : ""}>${esc(option)}</option>`).join("")}
-    </select>`;
-  } else if (type.startsWith("@")) {
-    const target = type.slice(1);
-    input = `<select name="${name}" ${req}>
-      <option value="">Select…</option>
-      ${db[target].map(item => `<option value="${item.id}"
-        ${item.id === raw ? "selected" : ""}>
-        ${esc(label(target,item))}
-      </option>`).join("")}
-    </select>`;
-  } else {
-    input = `<input name="${name}" type="${type}"
-      value="${esc(raw)}" ${req}
-      ${type === "number" ? 'min="0" step="0.01"' : ""}
-      ${name === "date_of_birth" ?
-        `max="${new Date().toISOString().slice(0,10)}"` : ""}>`;
-  }
-
-  return `<label>${esc(title)}${required ? " *" : ""}${input}</label>`;
-}
-
-function form(existing) {
-  const key = current;
-  const module = modules[key];
-
-  $("#formTitle").textContent =
-    (existing ? "Edit: " : "Add: ") + module.label;
-  $("#error").textContent = "";
-  $("#fields").innerHTML = module.fields
-    .map(field => inputHTML(field,existing)).join("");
-
-  $("#form").onsubmit = event => {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    const record = {
-      id: existing?.id || Math.max(0,...db[key].map(x => x.id)) + 1
-    };
-
-    for (const [name,title,type,required] of module.fields) {
-      const raw = data.get(name);
-      record[name] = raw === "" ? null :
-        typeof type === "string" &&
-        (type.startsWith("@") || type === "number") ?
-        Number(raw) : String(raw).trim();
-
-      if (required && (record[name] == null || record[name] === "")) {
-        $("#error").textContent = title + " is required.";
-        return;
-      }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="Konda YouthNet and Family Health — supporting young people, families, and communities.">
+
+  <title>KONDA | YouthNet & Family Health</title>
+
+  <style>
+    :root {
+      --green: #175b43;
+      --dark: #143b2e;
+      --lime: #e6edaf;
+      --cream: #f6f7f1;
+      --white: #fff;
+      --text: #243c32;
+      --muted: #617168;
+      --line: #dce3d9;
     }
 
-    if (record.end_date && record.start_date &&
-        record.end_date < record.start_date) {
-      $("#error").textContent = "End date must be on or after start date.";
-      return;
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
     }
 
-    const unique = {
-      attendance:["activity_id","participant_id"],
-      household_members:["household_id","participant_id"]
-    }[key];
-
-    if (unique && db[key].some(x =>
-        x.id !== record.id && unique.every(name => x[name] === record[name]))) {
-      $("#error").textContent = "This relationship already exists.";
-      return;
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--cream);
     }
 
-    if (key === "outcomes" && record.enrollment_id) {
-      const enrollment = db.enrollments.find(x => x.id === record.enrollment_id);
-      if (enrollment.participant_id !== record.participant_id) {
-        $("#error").textContent =
-          "The enrollment belongs to another participant.";
-        return;
-      }
+    a { color: inherit; }
+    button { font: inherit; }
+    img { display: block; max-width: 100%; }
+    [hidden] { display: none !important; }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin-inline: auto;
     }
 
-    if (existing) {
-      db[key][db[key].findIndex(x => x.id === existing.id)] = record;
-    } else {
-      db[key].push(record);
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 15px;
+      z-index: 100;
+      padding: 14px;
+      background: white;
+      color: var(--dark);
     }
 
-    $("#dialog").close();
-    render();
-  };
+    .skip-link:focus { top: 10px; }
 
-  $("#dialog").showModal();
-}
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid #bc9230;
+      outline-offset: 5px;
+    }
 
-function exportRecords() {
-  const blob = new Blob(
-    [JSON.stringify(matches(),null,2)],
-    {type:"application/json"}
-  );
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "konda-demo-" + current + ".json";
-  link.click();
-  setTimeout(() => URL.revokeObjectURL(url),1000);
-}
+    /* Navigation */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: white;
+      border-bottom: 1px solid var(--line);
+    }
 
-$("#close").onclick = () => $("#dialog").close();
-</script>
+    .nav {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
-</body>
-</html>
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+    }
+
+    .brand-name {
+      display: block;
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--green);
+    }
+
+    .brand-description {
+      display: block;
+      margin-top: 3px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--green); }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 15px 23px;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      background: var(--green);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .2s ease;
+    }
+
+    .button:hover { background: var(--dark); }
+
+    .button-light {
+      background: var(--lime);
+      color: var(--dark);
+    }
+
+    .button-light:hover { background: white; }
+
+    .button-outline {
+      border-color: #ffffff70;
+      background: transparent;
+      color: white;
+    }
+
+    .button-outline:hover {
+      background: #ffffff15;
+    }
+
+    .menu-button {
+      display: none;
+      padding: 10px 14px;
+      background: white;
+      color: var(--green);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--dark);
+      color: white;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      min-height: 610px;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      align-self: center;
+      padding: 76px 52px 76px 0;
+    }
+
+    .eyebrow {
+      margin: 0 0 20px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.5;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+
+    .hero .eyebrow { color: var(--lime); }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(44px, 5.8vw, 76px);
+      line-height: 1.04;
+      letter-spacing: -3px;
+    }
+
+    .hero-copy > p:not(.eyebrow) {
+      max-width: 490px;
+      margin: 26px 0;
+      color: #d5e2da;
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 460px;
+      background:
+        radial-gradient(circle at 80% 20%, #729c58, transparent 55%),
+        linear-gradient(135deg, #376c4d, #1c4637);
+    }
+
+    .hero-visual > img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+    }
+
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, #102d24c9, transparent 65%);
+    }
+
+    .hero-caption {
+      position: absolute;
+      z-index: 1;
+      left: 30px;
+      right: 30px;
+      bottom: 34px;
+      border-left: 3px solid var(--lime);
+      padding-left: 18px;
+    }
+
+    .hero-caption strong {
+      display: block;
+      font-size: 25px;
+      line-height: 1.3;
+    }
+
+    .hero-caption span {
+      display: block;
+      margin-top: 9px;
+      color: #dfebe2;
+      font-size: 14px;
+    }
+
+    /* Mission strip */
+    .mission-strip {
+      background: var(--lime);
+      padding: 27px 0;
+    }
+
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .mission-item {
+      padding: 5px 28px;
+      border-right: 1px solid #173e2c30;
+    }
+
+    .mission-item:first-child { padding-left: 0; }
+    .mission-item:last-child { border-right: 0; }
+
+    .mission-item strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 20px;
+    }
+
+    .mission-item span {
+      color: #486044;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Shared sections */
+    .section { padding: 85px 0; }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 38px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(32px, 4.5vw, 52px);
+      line-height: 1.12;
+      letter-spacing: -1.7px;
+    }
+
+    .section-intro {
+      max-width: 620px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    /* Numbered program cards */
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .program-card {
+      position: relative;
+      padding: 30px;
+      background: white;
+      border: 1px
